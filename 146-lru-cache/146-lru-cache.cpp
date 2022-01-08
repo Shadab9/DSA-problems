@@ -1,5 +1,4 @@
-class LRUCache {
-    public:
+
 class node
     {
         public:
@@ -11,7 +10,9 @@ class node
             key=_key;
             value=_value;
         }
-    };
+    };class LRUCache {
+    public:
+
     node* head=new node(-1,-1);
     node* tail=new node(-1,-1);
     int cap;
