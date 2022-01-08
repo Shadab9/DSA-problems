@@ -4,8 +4,8 @@ public:
         string str=to_string(n);
         int ind1=-1,ind2=-1;
         string temp=str;
-        if(temp.size()==1)
-            return -1;
+        // if(temp.size()==1)
+        //     return -1;
         for(int i=0;i<str.size();i++)
         {
             if(str[i]<str[i+1])
