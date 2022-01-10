@@ -25,8 +25,8 @@ public:
         if(root->val>val)
         {
             root->left=insertIntoBST(root->left,val);
-                return root;
+            return root;
         }
-        return nullptr;
+        return NULL;
     }
 };
