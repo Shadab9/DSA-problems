@@ -1,5 +1,5 @@
 class Solution {
-public:
+
     bool dfs(int i,int j,vector<vector<int>>&vis,vector<vector<char>>& board,int s,string word)
     {
        
@@ -13,6 +13,7 @@ public:
 
         return ans;
     }
+    public:
     bool exist(vector<vector<char>>& board, string word) {
         int m=board.size();
         int n=board[0].size();
