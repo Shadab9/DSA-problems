@@ -1,16 +1,11 @@
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
-        unordered_map<int,int>freq;
-        for(int i=0;i<nums.size();i++)
-        {
-            freq[nums[i]]++;
-        }
-        for(int i=0;i<nums.size()+1;i++)
-        {
-            if(freq[i]==0)
-                return i;
-        }
-        return 0;
+        int sum=0;
+        int size=nums.size();
+        sum=((size)*(size+1))/2;
+        for(int i:nums)
+            sum-=i;
+        return sum;
     }
 };
