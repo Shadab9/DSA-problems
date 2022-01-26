@@ -11,6 +11,7 @@ public:
                 swap(nums[i],nums[index]);
             else
                 i++;
+            //cout<<nums[i]<<" "<<nums[index]<<endl;
         }
         for(int i=0;i<size;i++)
         {
