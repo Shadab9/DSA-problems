@@ -1,14 +1,21 @@
 class Solution {
 public:
-    int climbStairs(int n) {
-        if(n<=1)
+    int climbStairsUtil(int n,vector<int>&dp)
+    {
+        if(n==0 or n==1 or n==2)
             return n;
-        int dp[n+1];
-        dp[0]=0;
-        dp[1]=1;
-        dp[2]=2;
-        for(int i=3;i<=n;i++)
-            dp[i]=dp[i-1]+dp[i-2];
-        return dp[n];
+        if(dp[n]!=-1)
+            return dp[n];
+    
+            int opt1=climbStairsUtil(n-1,dp);
+            int opt2=climbStairsUtil(n-2,dp);
+            return dp[n]=opt1+opt2;
+    
+    }
+    int climbStairs(int n) {
+        vector<int>dp(n+1,-1);
+        
+        
+        return climbStairsUtil(n,dp);
     }
 };
