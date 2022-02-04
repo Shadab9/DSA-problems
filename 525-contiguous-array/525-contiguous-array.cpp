@@ -2,7 +2,7 @@ class Solution {
 public:
     int findMaxLength(vector<int>& nums) {
         int count=0;
-        int result=INT_MIN;
+        int result=0;
         unordered_map<int,int>mp;
         for(int i=0;i<nums.size();i++)
         {
@@ -14,8 +14,8 @@ public:
             else
                 result=max(result,i-mp[count]);
         }
-        if(result==INT_MIN)
-            return 0;
+        // if(result==INT_MIN)
+        //     return 0;
         return result;
     }
 };
