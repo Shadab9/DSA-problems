@@ -15,8 +15,8 @@ public:
             temp.pop_back();
             combinationSumUtil(s+1,v,k,n,temp,result);
         }
-        //else
-            //combinationSumUtil(s+1,v,k,n,temp,result);
+        else
+            combinationSumUtil(s+1,v,k,n,temp,result);
     }
     vector<vector<int>> combinationSum3(int k, int n) {
         vector<vector<int>>result;
