@@ -1,5 +1,5 @@
 class Solution {
-public:
+
     int ispalin(string s,int l,int r)
     {
         while(l<=r)
@@ -16,7 +16,6 @@ public:
             result.push_back(path);
             return;
         }
-        
         for(int i=st;i<s.size();i++)
         {
             if(ispalin(s,st,i))
@@ -28,6 +27,7 @@ public:
         }
         
     }
+    public:
     vector<vector<string>> partition(string s) {
         vector<vector<string>>result;
         vector<string>path;
