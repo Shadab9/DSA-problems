@@ -2,7 +2,7 @@ class Solution {
 public:
     void combinationSumUtil(int s,vector<int>&v,int k,int n,vector<int>&temp,vector<vector<int>>& result)
     {
-        if((n==0 and k==0) or s==v.size())
+        if((n==0 or k==0) or s==v.size())
         {
             if(n==0 and k==0)
             result.push_back(temp);
