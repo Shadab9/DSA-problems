@@ -1,28 +1,27 @@
 class Solution {
-
-    bool dfs(int i,int j,vector<vector<int>>&vis,vector<vector<char>>& board,int s,string word)
+public:
+    bool wordSearch(vector<vector<char>>& board,string word,int i, int j,int row,int col,int st,vector<vector<int>>&vis)
     {
-       
-        if(s==word.size())
-            return true;
-        if(i<0 || i>=board.size() || j<0 || j>=board[0].size() || board[i][j] != word[s] || vis[i][j]==1)
-            return false;
-            vis[i][j]=1;
-            bool ans=dfs(i+1,j,vis,board,s+1,word) or dfs(i-1,j,vis,board,s+1,word) or dfs(i,j+1,vis,board,s+1,word) or dfs(i,j-1,vis,board,s+1,word);
-            vis[i][j]=0;            
-
+        if(st==word.size())
+            return 1;
+        if(i>=row or j>=col or i<0 or j<0 or vis[i][j]==1 or board[i][j]!=word[st])
+            return 0;
+        vis[i][j]=1;
+        bool ans=wordSearch(board,word,i+1,j,row,col,st+1,vis) or wordSearch(board,word,i-1,j,row,col,st+1,vis) or wordSearch(board,word,i,j+1,row,col,st+1,vis) or wordSearch(board,word,i,j-1,row,col,st+1,vis);
+        vis[i][j]=0;
         return ans;
     }
-    public:
     bool exist(vector<vector<char>>& board, string word) {
-        int m=board.size();
-        int n=board[0].size();
-        vector<vector<int>>vis(m,vector<int>(n,0));
-        for(int i=0;i<m;i++)
+        int row=board.size();
+        int col=board[0].size();
+        vector<vector<int>>vis(row+1,vector<int>(col+1,0));
+        for(int i=0;i<row;i++)
         {
-            for(int j=0;j<n;j++)
-                if(dfs(i,j,vis,board,0,word))
+            for(int j=0;j<col;j++)
+            {
+                if(wordSearch(board,word,i,j,row,col,0,vis))
                     return true;
+            }
         }
         return false;
     }
