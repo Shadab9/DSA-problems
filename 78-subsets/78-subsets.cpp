@@ -1,7 +1,7 @@
 class Solution {
     void subsetsUtil(vector<int>& nums,int start,vector<vector<int>>& result,vector<int>& temp)
     {
-        if(start==nums.size())
+        if(start>=nums.size())
         {
             result.push_back(temp);
             return;
