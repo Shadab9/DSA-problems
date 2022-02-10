@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void letter(string s,int start,int end,string &temp,vector<string>&result)
+    void letterUtil(string s,int start,vector<string>&result,string& temp)
     {
         if(start>=s.size())
         {
@@ -10,26 +10,25 @@ public:
         if(!isdigit(s[start]))
         {
             temp.push_back(s[start]);
-            letter(s,start+1,end,temp,result);
+            letterUtil(s,start+1,result,temp);
             temp.pop_back();
             
-            
-            s[start]=(s[start]>='a' and  s[start]<='z')?toupper(s[start]):tolower(s[start]);
+            s[start]=(s[start]>='a' and s[start]<='z'?toupper(s[start]):tolower(s[start]));
             temp.push_back(s[start]);
-            letter(s,start+1,end,temp,result);
+            letterUtil(s,start+1,result,temp);
             temp.pop_back();
         }
         else
         {
             temp.push_back(s[start]);
-            letter(s,start+1,end,temp,result);
+            letterUtil(s,start+1,result,temp);
             temp.pop_back();
         }
     }
     vector<string> letterCasePermutation(string s) {
         vector<string>result;
         string temp;
-        letter(s,0,s.size(),temp,result);
+        letterUtil(s,0,result,temp);
         return result;
     }
 };
