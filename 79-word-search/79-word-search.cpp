@@ -19,8 +19,11 @@ public:
         {
             for(int j=0;j<col;j++)
             {
-                if(wordSearch(board,word,i,j,row,col,0,vis))
-                    return true;
+                if(board[i][j]==word[0])
+                {
+                    if(wordSearch(board,word,i,j,row,col,0,vis))
+                        return true;
+                }
             }
         }
         return false;
