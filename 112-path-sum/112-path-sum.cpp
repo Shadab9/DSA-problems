@@ -17,6 +17,5 @@ public:
         if(root->left==nullptr and root->right==nullptr)
             return targetSum-(root->val)==0;
         return hasPathSum(root->left,targetSum-(root->val)) or hasPathSum(root->right,targetSum-(root->val));
-        
     }
 };
