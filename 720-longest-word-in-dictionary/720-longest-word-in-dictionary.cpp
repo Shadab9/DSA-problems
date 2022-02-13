@@ -1,45 +1,52 @@
 class Solution {
 public:
-    class TrieNode{
-    public:
-        map<char, TrieNode*> edges;
+    class TrieNode
+    {
+        public:
+        map<char,TrieNode*>edges;
         bool isEnd;
-        
-        TrieNode(){
-            edges = {};
-            isEnd = false;
+        TrieNode()
+        {
+            edges={};
+            isEnd=false;
         }
     };
-    TrieNode* root = new TrieNode();
-    
+    TrieNode* root=new TrieNode();
+    void insert(string word)
+    {
+        TrieNode* curr=root;
+        int size=word.size();
+        for(int i=0;i<size;i++)
+        {
+            if(curr->edges.find(word[i])==curr->edges.end())
+                curr->edges[word[i]]=new TrieNode();
+            curr=curr->edges[word[i]];
+        }
+        curr->isEnd=true;
+            
+    }
     string longestWord(vector<string>& words) {
-        sort(words.begin(), words.end());
-        string result = "";
+        sort(words.begin(),words.end());
+        
+        string result="";
         for(string& s: words)
             insert(s);
-        for(string& s: words){
-            TrieNode* cur = root;
-            bool isBreak = false;
-            for(int i = 0; i < s.size(); i++){
-                if(!cur -> edges[s[i]] -> isEnd){
-                    isBreak = true;
+        for(auto it:words)
+        {
+            TrieNode* curr=root;            
+            bool isbreak=false;
+            for(int i=0;i<it.size();i++)
+            {
+                if(!curr->edges[it[i]]->isEnd)
+                {
+                    isbreak=true;
                     break;
                 }
-                cur = cur -> edges[s[i]];
+                curr=curr->edges[it[i]];
             }
-            if(!isBreak && s.size() > result.size())
-                result = s;
+            if(!isbreak and it.size()>result.size())
+                result=it;
         }
         return result;
-        
-    }
-    void insert(string& s){
-        TrieNode* cur = root;
-        for(char c: s){
-            if(cur -> edges.find(c) == cur -> edges.end())
-                cur -> edges[c] = new TrieNode();
-            cur = cur -> edges[c];
-        }
-        cur -> isEnd = true;
     }
 };
