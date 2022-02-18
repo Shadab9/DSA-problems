@@ -1,13 +1,11 @@
 class Trie {
-        bool is_End;
-        Trie* children[26];
 public:
+    bool is_End;
+    Trie* children[26];
     Trie() {
-        this->is_End=0;
+        this->is_End=false;
         for(int i=0;i<26;i++)
-        {
             this->children[i]=NULL;
-        }
     }
     
     void insert(string word) {
@@ -37,7 +35,7 @@ public:
     }
     
     bool startsWith(string prefix) {
-        if(this==NULL)
+        if(this==nullptr)
             return false;
         Trie* root=this;
         for(int i=0;i<prefix.size();i++)
