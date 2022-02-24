@@ -1,9 +1,10 @@
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-        if(nums2.size()<nums1.size())return findMedianSortedArrays(nums2,nums1);
         int n1=nums1.size();
         int n2=nums2.size();
+        if(n2<n1)return findMedianSortedArrays(nums2,nums1);
+       
         int low=0;
         int high=n1;
         while(low<=high)
