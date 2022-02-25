@@ -3,24 +3,23 @@
 
 class Solution {
 public:
-    
     int firstBadVersion(int n) {
-        
-        long int l=1;
-        long int r=n;
-        int flag=0;
-        while(l<=r)
+        int left=1;
+        int right=n;
+        int flag;
+        while(left<=right)
         {
-            long int mid=(l+r)/2;
+            int mid=left+(right-left)/2;
             if(isBadVersion(mid))
             {
                 flag=mid;
-                r=mid-1;
+                right=mid-1;
             }
-            if(isBadVersion(mid)==false)
-                l=mid+1;
+            else
+            {
+                left=mid+1;
+            }
         }
         return flag;
-
     }
 };
