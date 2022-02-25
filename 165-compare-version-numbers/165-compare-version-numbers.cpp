@@ -2,7 +2,7 @@ class Solution {
 public:
     int compareVersion(string version1, string version2) {
         replace(version1.begin(), version1.end(), '.', ' '); 
-    replace(version2.begin(), version2.end(), '.', ' '); 
+        replace(version2.begin(), version2.end(), '.', ' '); 
 	
 	
     istringstream ss1(version1);
