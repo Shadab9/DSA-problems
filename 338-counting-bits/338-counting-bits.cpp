@@ -9,9 +9,11 @@ public:
         }
     }
     vector<int> countBits(int n) {
-        vector<int>result;
+        vector<int>result(n+1,0);
         
-        countBitsUtil(n,result);
+        for(int i=1;i<=n;i++)
+            result[i]=1+result[i & (i-1)];
+       
         return result;
     }
 };
