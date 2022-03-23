@@ -1,30 +1,25 @@
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        int c1=-1,c2=-1,count1=0,count2=0;
+        int count1=0,count2=0,c1=-1,c2=-1;
         int size=nums.size();
         for(int i=0;i<size;i++)
         {
-            if(nums[i]==c1)
+            if(c1==nums[i])
             {
                 count1++;
             }
-            else
-            if(nums[i]==c2)
-            {
+            else if(c2==nums[i])
                 count2++;
-            }
-            else 
-            if(count1==0)
+            else if(count1==0)
             {
-                count1=1;
                 c1=nums[i];
+                count1=1;
             }
-            else
-            if(count2==0)
+            else if(count2==0)
             {
-                count2=1;
                 c2=nums[i];
+                count2=1;
             }
             else
             {
@@ -32,18 +27,18 @@ public:
                 count2--;
             }
         }
-        int tc1=0,tc2=0;
-        for(int i=0;i<nums.size();i++)
+        int x=0,y=0;
+        for(int i=0;i<size;i++)
         {
-            if(nums[i]==c1)
-                tc1++;
-            if(nums[i]==c2)
-                tc2++;
+            if(c1==nums[i])
+                x++;
+            if(c2==nums[i])
+                y++;
         }
         vector<int>ans;
-        if(tc1>nums.size()/2)
+        if(x>nums.size()/2)
             ans.push_back(c1);
-        if(tc2>nums.size()/2)
+        if(y>nums.size()/2)
             ans.push_back(c2);
         return ans[0];
     }
