@@ -18,7 +18,7 @@ public:
             return "x";
         string x=duplicate(root->left);
         string y=duplicate(root->right);
-        string z=to_string(root->val)+","+x+","+y;
+        string z=x+","+y+","+to_string(root->val);
         mp[z]=1;
         return z;
     }
@@ -28,19 +28,18 @@ public:
             return "x";
         string x=duplicate(root->left);
         string y=duplicate(root->right);
-        string z=to_string(root->val)+","+x+","+y;
+        string z=x+","+y+","+to_string(root->val);
         mp[z]+=1;
         return z;
     }
-    
     bool isSubtree(TreeNode* root, TreeNode* subRoot) {
         duplicate(root);
         duplicates(subRoot);
         for(auto it:mp)
         {
             if(it.second>1)
-                return 1;
+                return true;
         }
-        return 0;
+        return false;
     }
 };
