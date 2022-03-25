@@ -11,35 +11,35 @@
  */
 class Solution {
 public:
-    unordered_map<string,int>mp;
-    string duplicate(TreeNode* root)
+    string duplicate(TreeNode* root,unordered_map<string,int>&mp)
     {
         if(root==nullptr)
             return "x";
-        string x=duplicate(root->left);
-        string y=duplicate(root->right);
+        string x=duplicate(root->left,mp);
+        string y=duplicate(root->right,mp);
         string z=x+","+y+","+to_string(root->val);
         mp[z]=1;
         return z;
     }
-    string duplicates(TreeNode* root)
+    string duplicates(TreeNode* root,unordered_map<string,int>&mp)
     {
         if(root==nullptr)
             return "x";
-        string x=duplicate(root->left);
-        string y=duplicate(root->right);
+        string x=duplicate(root->left,mp);
+        string y=duplicate(root->right,mp);
         string z=x+","+y+","+to_string(root->val);
         mp[z]+=1;
         return z;
     }
     bool isSubtree(TreeNode* root, TreeNode* subRoot) {
-        duplicate(root);
-        duplicates(subRoot);
+        unordered_map<string,int>mp;
+        duplicate(root,mp);
+        duplicates(subRoot,mp);
         for(auto it:mp)
         {
             if(it.second>1)
-                return true;
+                return 1;
         }
-        return false;
+        return 0;
     }
 };
