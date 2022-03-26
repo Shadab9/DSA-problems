@@ -1,30 +1,28 @@
 class Solution {
-    void permuteUtil(vector<int>&nums,int st,vector<vector<int>>&result)
+   void permuteUtil(vector<int>&nums,int start,int end,vector<vector<int>>&result)
     {
-        if(st==nums.size())
+        if(start>=end)
         {
             result.push_back(nums);
             return;
         }
         unordered_set<int>mp;
-        for(int j=st;j<nums.size();j++)
+        for(int i=start;i<end;i++)
         {
-            if(mp.find(nums[j])!=mp.end()) continue;
-            // if(j>st and nums[j]==nums[j-1])
-            //     continue;
-            swap(nums[st],nums[j]);
-            permuteUtil(nums,st+1,result);
-            swap(nums[st],nums[j]);
-            mp.insert(nums[j]);
+            if(mp.find(nums[i])!=mp.end())
+                continue;
+            swap(nums[start],nums[i]);
+            permuteUtil(nums,start+1,end,result);
+            swap(nums[start],nums[i]);
+            mp.insert(nums[i]);
         }
-        
     }
         
 public:
     vector<vector<int>> permuteUnique(vector<int>& nums) {
         vector<vector<int>>result;
         sort(nums.begin(),nums.end());
-        permuteUtil(nums,0,result);
+        permuteUtil(nums,0,nums.size(),result);
 //         vector<vector<int>>result1;
         
 //         for(auto it:result)
