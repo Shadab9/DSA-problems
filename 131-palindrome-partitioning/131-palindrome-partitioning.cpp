@@ -1,37 +1,41 @@
 class Solution {
-
-    int ispalin(string s,int l,int r)
+public:
+    int ispalin(string s,int start,int end)
     {
-        while(l<=r)
+        while(start<=end)
         {
-            if(s[l++]!=s[r--])
+            if(s[start++]!=s[end--])
+            {
                 return 0;
+            }
+            
         }
         return 1;
     }
-    void help(string s,int st,vector<string>&path,vector<vector<string>>&result)
+    void partitionUtil(string s,int start,int end,vector<string>&temp,vector<vector<string>>&result)
     {
-        if(st==s.size())
+        if(start>=end)
         {
-            result.push_back(path);
+            result.push_back(temp);
             return;
         }
-        for(int i=st;i<s.size();i++)
+        
+        for(int i=start;i<end;i++)
         {
-            if(ispalin(s,st,i))
+            if(ispalin(s,start,i))
             {
-                path.push_back(s.substr(st,i-st+1));
-                help(s,i+1,path,result);
-                path.pop_back();
+                temp.push_back(s.substr(start,i-start+1));
+                partitionUtil(s,i+1,end,temp,result);
+                temp.pop_back();
             }
         }
-        
     }
-    public:
+        
     vector<vector<string>> partition(string s) {
         vector<vector<string>>result;
-        vector<string>path;
-        help(s,0,path,result);
+        vector<string>temp;
+        partitionUtil(s,0,s.size(),temp,result);
+        
         return result;
     }
 };
