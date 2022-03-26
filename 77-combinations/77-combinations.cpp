@@ -1,12 +1,11 @@
 class Solution {
 public:
-    void combineUtil(vector<int>& nums,int start,int k,vector<int>& temp,vector<vector<int>>& result)
+    void combineUtil(vector<int>&nums,int start,int k,vector<int>&temp,vector<vector<int>>&result)
     {
-        
-        if( k==0 or start>=nums.size())
+        if(start>=nums.size() or k<=0)
         {
             if(k==0)
-            result.push_back(temp);
+                result.push_back(temp);
             return;
         }
         temp.push_back(nums[start]);
@@ -16,10 +15,10 @@ public:
     }
     vector<vector<int>> combine(int n, int k) {
         vector<vector<int>>result;
+        vector<int>temp;
         vector<int>nums;
         for(int i=1;i<=n;i++)
             nums.push_back(i);
-        vector<int>temp;
         combineUtil(nums,0,k,temp,result);
         return result;
     }
