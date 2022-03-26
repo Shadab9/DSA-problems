@@ -1,28 +1,33 @@
 class Solution {
 public:
-    void combinationSumUtil(int s,vector<int>&v,int k,int n,vector<int>&temp,vector<vector<int>>& result)
+    
+    
+    void combinationUtil(vector<int>&nums,int k,int n,int start,vector<int>&temp,vector<vector<int>>&result)
     {
-        if((n==0 or k==0) or s==v.size())
+        
+        
+        if((start>=nums.size() ) or (n==0 or k==0))
         {
             if(n==0 and k==0)
-            result.push_back(temp);
+                result.push_back(temp);
             return;
         }
-        if(v[s]<=n)
-        {
-            temp.push_back(v[s]);
-            combinationSumUtil(s+1,v,k-1,n-v[s],temp,result);
+        // if(nums[start]<=n)
+        // {
+            temp.push_back(nums[start]);
+            combinationUtil(nums,k-1,n-nums[start],start+1,temp,result);
             temp.pop_back();
-            combinationSumUtil(s+1,v,k,n,temp,result);
-        }
-        else
-            combinationSumUtil(s+1,v,k,n,temp,result);
+            combinationUtil(nums,k,n,start+1,temp,result);
+        
     }
+        
     vector<vector<int>> combinationSum3(int k, int n) {
         vector<vector<int>>result;
         vector<int>temp;
-        vector<int>v={1,2,3,4,5,6,7,8,9};
-        combinationSumUtil(0,v,k,n,temp,result);
+        vector<int>nums;
+        for(int i=1;i<=9;i++)
+            nums.push_back(i);
+        combinationUtil(nums,k,n,0,temp,result);
         return result;
     }
 };
