@@ -1,21 +1,21 @@
 class Solution {
-    void subsetsUtil(vector<int>& nums,int start,vector<vector<int>>& result,vector<int>& temp)
+public:
+    void subsetUtil(vector<int>&nums,int start,vector<int>&temp,vector<vector<int>>&result)
     {
         if(start>=nums.size())
         {
             result.push_back(temp);
             return;
         }
-            temp.push_back(nums[start]);
-            subsetsUtil(nums,start+1,result,temp);
-            temp.pop_back();
-            subsetsUtil(nums,start+1,result,temp);
+        temp.push_back(nums[start]);
+        subsetUtil(nums,start+1,temp,result);
+        temp.pop_back();
+        subsetUtil(nums,start+1,temp,result);
     }
-public:
     vector<vector<int>> subsets(vector<int>& nums) {
         vector<vector<int>>result;
-        vector<int>temp;   
-        subsetsUtil(nums,0,result,temp);
+        vector<int>temp;
+        subsetUtil(nums,0,temp,result);
         return result;
     }
 };
