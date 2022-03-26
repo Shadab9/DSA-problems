@@ -1,29 +1,27 @@
 class Solution {
 public:
-    int longestUtil(vector<int>& nums,int start,int end)
-    {
-        unordered_map<int,int>elementFreq;
-        int answer=0;
-        for(int i=0;i<end;i++)
-        elementFreq[nums[i]]=1;
-        for(int i=0;i<end;i++)
-        {
-            if(elementFreq[nums[i]-1]==0)
-            {
-                int count=0;
-                int value=nums[i];
-                while(elementFreq[value]==1)
-                {
-                    value++;
-                    count++;
-                }
-                answer=max(answer,count);
-            }
-        }
-        return answer;
-    }
     int longestConsecutive(vector<int>& nums) {
         int size=nums.size();
-        return longestUtil(nums,0,size);
+        unordered_map<int,int>freq;
+        for(int i=0;i<size;i++)
+        {
+            freq[nums[i]]++;
+        }
+        int result=0;
+        for(int i=0;i<size;i++)
+        {
+            int count=0;
+            if(freq[nums[i]-1]==0)
+            {
+                int temp=nums[i];
+                while(freq[temp]>=1)
+                {
+                    temp++;
+                    count++;
+                }
+            }
+            result=max(result,count);
+        }
+        return result;
     }
 };
