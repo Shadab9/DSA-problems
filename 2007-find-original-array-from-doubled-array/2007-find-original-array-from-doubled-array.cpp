@@ -19,8 +19,7 @@ private:
             }
             else
             {
-                vector<int>dum;
-                return dum;
+                return {};
             }
         }
         return result;
