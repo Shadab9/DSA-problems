@@ -10,7 +10,7 @@ public:
                     st.pop();
                 }
                 if(!st.empty() && st.top() == -it) st.pop();
-                else if(!st.empty() && st.top() > -it) continue;
+               else if(!st.empty() && st.top() > -it) continue;
                 else st.push(it);
             }
         }
