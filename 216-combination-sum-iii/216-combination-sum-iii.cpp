@@ -1,26 +1,24 @@
 class Solution {
 public:
-    void combinationUtil(vector<int>&nums,int k,int n,int start,vector<int>&temp,vector<vector<int>>&result)
+    void combinationSumUtil(vector<int>&nums,int ind,vector<int>&temp,vector<vector<int>>&result,int k,int n)
     {
-        if((start>=nums.size() ) or (n==0 or k==0))
+        if(ind>=nums.size() or  k<=0 or n<=0)
         {
-            if(n==0 and k==0)
+            if(k==0 and n==0)
                 result.push_back(temp);
             return;
         }
-        temp.push_back(nums[start]);
-        combinationUtil(nums,k-1,n-nums[start],start+1,temp,result);
+        temp.push_back(nums[ind]);
+        combinationSumUtil(nums,ind+1,temp,result,k-1,n-nums[ind]);
         temp.pop_back();
-        combinationUtil(nums,k,n,start+1,temp,result);
-    }
+        combinationSumUtil(nums,ind+1,temp,result,k,n);
         
+    }
     vector<vector<int>> combinationSum3(int k, int n) {
+        vector<int>nums={1,2,3,4,5,6,7,8,9};
         vector<vector<int>>result;
         vector<int>temp;
-        vector<int>nums;
-        for(int i=1;i<=9;i++)
-            nums.push_back(i);
-        combinationUtil(nums,k,n,0,temp,result);
+        combinationSumUtil(nums,0,temp,result,k,n);
         return result;
     }
 };
