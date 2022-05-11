@@ -10,13 +10,12 @@ public:
         }
         
         countUtil(vowels,ind,n-1,count);
-        
         countUtil(vowels,ind+1,n,count);
         
     }
     int countVowelStrings(int n) {
         vector<char> vowels={'a','e','i','o','u'};
-        vector<char>temp;
+        
        
         int count=0;
         countUtil(vowels,0,n,count);
