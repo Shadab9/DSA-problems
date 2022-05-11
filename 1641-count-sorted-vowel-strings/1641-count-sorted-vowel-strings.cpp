@@ -8,9 +8,9 @@ public:
                 count++;
             return;
         }
-        temp.push_back(vowels[ind]);
+        //temp.push_back(vowels[ind]);
         countUtil(vowels,ind,n-1,temp,count);
-        temp.pop_back();
+        //temp.pop_back();
         countUtil(vowels,ind+1,n,temp,count);
         
     }
