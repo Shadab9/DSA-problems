@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void countUtil(vector<char>&vowels,int ind,int n,vector<char>&temp,int &count)
+    void countUtil(vector<char>&vowels,int ind,int n,int &count)
     {
         if(ind>=vowels.size() or n<=0)
         {
@@ -9,9 +9,9 @@ public:
             return;
         }
         //temp.push_back(vowels[ind]);
-        countUtil(vowels,ind,n-1,temp,count);
+        countUtil(vowels,ind,n-1,count);
         //temp.pop_back();
-        countUtil(vowels,ind+1,n,temp,count);
+        countUtil(vowels,ind+1,n,count);
         
     }
     int countVowelStrings(int n) {
@@ -19,7 +19,7 @@ public:
         vector<char>temp;
         //vector<vector<char>>result;
         int count=0;
-        countUtil(vowels,0,n,temp,count);
+        countUtil(vowels,0,n,count);
         return count;
     }
 };
