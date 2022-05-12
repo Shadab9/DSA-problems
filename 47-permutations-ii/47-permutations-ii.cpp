@@ -23,13 +23,6 @@ public:
         vector<vector<int>>result;
         sort(nums.begin(),nums.end());
         permuteUtil(nums,0,nums.size(),result);
-//         vector<vector<int>>result1;
-        
-//         for(auto it:result)
-//         {
-//             result1.push_back(it);
-            
-//         }
         return result;
     }
 };
