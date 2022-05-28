@@ -7,7 +7,7 @@ public:
             result.push_back(temp);
             return;
         }
-        temp.push_back(nums[start]);
+        temp.push_back(nums[start]);//accept
         subsetUtil(nums,start+1,temp,result);
         temp.pop_back();
         subsetUtil(nums,start+1,temp,result);
@@ -19,3 +19,5 @@ public:
         return result;
     }
 };
+          
+                            
