@@ -15,7 +15,7 @@ public:
             }
             else
             {
-                while(mp[s[i]]>1)
+               while  (mp[s[i]]>1)
                 {
                     mp[s[start]]--;
                     start++;
