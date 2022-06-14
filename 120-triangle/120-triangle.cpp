@@ -17,17 +17,16 @@ public:
 //       4 1 8 3
     
     int minimumTotal(vector<vector<int>>& triangle) {
-        
-       vector<vector<int>>result;
-       
+        vector<int>temp1=triangle[triangle.size()-1];
        for(int i=triangle.size()-2;i>=0;i--)
        {
-           //vector<int>it=triangle[i];
+           vector<int>temp2(triangle[i].size());
            for(int j=0;j<triangle[i].size();j++)
            {
-               triangle[i][j]=triangle[i][j]+min(triangle[i+1][j],triangle[i+1][j+1]);
+               temp2[j]=triangle[i][j]+min(temp1[j],temp1[j+1]);
            }   
+           temp1=temp2;
        }
-       return triangle[0][0];
+       return temp1[0];
     }
 };
