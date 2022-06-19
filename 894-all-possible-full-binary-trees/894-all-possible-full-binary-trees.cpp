@@ -14,7 +14,9 @@ public:
     vector<TreeNode*> allPossibleBSTUtil(int r,unordered_map<int,vector<TreeNode*>>&mp)
     {
         vector<TreeNode*>result;
-       
+        if(r<0||r%2==0){
+        return result;
+    }
         if(mp.find(r)!=mp.end())
             return mp[r];
         if(r==1)
