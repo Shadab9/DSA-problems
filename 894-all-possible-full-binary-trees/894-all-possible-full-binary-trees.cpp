@@ -16,7 +16,7 @@ public:
         vector<TreeNode*>result;
         if(r<0||r%2==0){
         return result;
-    }
+        }
         if(mp.find(r)!=mp.end())
             return mp[r];
         if(r==1)
@@ -27,8 +27,8 @@ public:
         }
         for(int i=1;i<r;i++)
         {
-            vector<TreeNode*>leftTree=allPossibleBSTUtil(i,mp);
-            vector<TreeNode*>rightTree=allPossibleBSTUtil(r-i-1,mp);
+            vector<TreeNode*>leftTree=allPossibleBSTUtil(i-1,mp);
+            vector<TreeNode*>rightTree=allPossibleBSTUtil(r-i,mp);
             for(auto it:leftTree)
             {
                 for(auto it1:rightTree)
